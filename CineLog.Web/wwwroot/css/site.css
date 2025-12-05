@@ -1,0 +1,176 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+/* --- GENEL SÝNEMATÝK EFEKTLER (CineLog) --- */
+
+/* 1. Buzlu Cam Efekti (Glassmorphism) 
+   Hem ana sayfa arama kutusu hem de film arama kutusu için */
+.glass-panel, .glass-search-bar {
+    background: rgba(30, 30, 30, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* 2. Yazý Gölgeleri (Okunabilirlik için) */
+.text-shadow-strong {
+    text-shadow: 2px 2px 8px #000000;
+}
+
+.text-shadow-light {
+    text-shadow: 1px 1px 4px #000000;
+}
+
+/* 3. Ana Sayfa Özellik Kartlarý */
+.feature-card {
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+    .feature-card:hover {
+        transform: translateY(-10px); /* Havalanma efekti */
+        background: rgba(255, 255, 255, 0.05);
+        border-color: var(--bs-primary);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    }
+
+/* 4. Film Kartlarý (Movies/Index ve MyList için) */
+.movie-card {
+    transition: all 0.3s ease;
+    background-color: #1e1e1e;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+}
+
+    .movie-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        border-color: var(--bs-warning);
+    }
+
+/* Poster Kutusu (Zoom efekti için çerçeve) */
+.movie-poster-container {
+    height: 380px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Posterin Kendisi */
+.movie-poster {
+    transition: transform 0.5s ease;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Karta gelince poster zoom yapsýn */
+.movie-card:hover .movie-poster {
+    transform: scale(1.05);
+}
+
+/* 5. Animasyonlar (Aþaðýdan yukarý süzülme) */
+.fade-in, .fade-in-up {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- MODERN FOOTER --- */
+.glass-footer {
+    background: rgba(15, 15, 15, 0.95); /* Çok koyu gri */
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.05); /* Üstte ince çizgi */
+    padding-top: 3rem;
+    padding-bottom: 1.5rem;
+    margin-top: auto; /* Sayfa içeriði azsa bile en alta iter */
+}
+
+.footer-brand i {
+    font-size: 1.5rem;
+    vertical-align: middle;
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+    color: #aaa; /* Sönük gri */
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+    .footer-links a:hover {
+        color: var(--bs-primary); /* Üzerine gelince Mavi */
+        padding-left: 5px; /* Hafif saða kayma efekti */
+    }
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    color: #fff;
+    margin-right: 10px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+    .social-icon:hover {
+        background: var(--bs-primary);
+        transform: translateY(-3px);
+        color: #fff;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    }
+
+/* Navbar için özel buzlu cam efekti */
+.glass-navbar {
+    background-color: rgba(20, 20, 20, 0.9) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Linklerin üzerine gelince parlamasý */
+.nav-link {
+    transition: color 0.3s ease;
+}
+
+    .nav-link:hover {
+        color: #fff !important;
+        text-shadow: 0 0 5px rgba(255,255,255,0.5);
+    }

@@ -1,0 +1,76 @@
+﻿@model CineLog.Core.DTOs.OmdbDto
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="container mt-5 fade-in">
+    <a asp-action="MyList" class="btn btn-outline-secondary mb-3">
+        <i class="bi bi-arrow-left"></i> Listeye Dön
+    </a>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="bi bi-check-circle-fill"></i> <strong>Harika!</strong> @TempData["Success"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <i class="bi bi-exclamation-triangle-fill"></i> <strong>Dikkat!</strong> @TempData["Error"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="card border-primary mb-3 shadow-lg">
+        <div class="row g-0">
+            <div class="col-md-4">
+                @if (Model.PosterUrl != "N/A")
+                {
+                    <img src="@Model.PosterUrl" class="img-fluid rounded-start w-100 h-100" style="object-fit: cover;" alt="@Model.Title">
+                }
+                else
+                {
+                    <div class="d-flex align-items-center justify-content-center h-100 bg-secondary text-white" style="min-height: 400px;">
+                        <span>Resim Yok</span>
+                    </div>
+                }
+            </div>
+
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h1 class="card-title text-warning display-6">@Model.Title</h1>
+
+                    <div class="mb-3">
+                        <span class="badge bg-light text-dark me-2">@Model.Year</span>
+                        <span class="badge bg-info me-2">@Model.Genre</span>
+                    </div>
+
+                    <div class="mb-3">
+                        <span class="badge bg-success fs-5">
+                            <i class="bi bi-star-fill"></i> IMDB: @Model.ImdbRating
+                        </span>
+                        <span class="text-muted ms-2">Yönetmen: @Model.Director</span>
+                    </div>
+
+                    <p class="card-text lead">@Model.Description</p>
+
+                    <hr class="my-4" />
+
+                    <form asp-controller="Movies" asp-action="AddToList" method="post">
+
+                        <input type="hidden" name="imdbId" value="@Model.ImdbId" />
+
+                        <button type="submit" class="btn btn-success btn-lg px-4">
+                            <i class="bi bi-plus-circle-fill"></i> Listeme Ekle
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

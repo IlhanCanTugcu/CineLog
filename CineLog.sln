@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36603.0 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CineLog.Core", "CineLog.Core\CineLog.Core.csproj", "{0D01025B-91BD-46CA-8F36-1B6BB851D7C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CineLog.Data", "CineLog.Data\CineLog.Data.csproj", "{BCADED55-398A-4138-A1B5-4323B49C4C61}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CineLog.Service", "CineLog.Service\CineLog.Service.csproj", "{435AB913-AD21-4600-8934-18C0E0722EAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CineLog.Web", "CineLog.Web\CineLog.Web.csproj", "{88C236FA-A2C9-49F1-9756-E1A41AAAF474}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0D01025B-91BD-46CA-8F36-1B6BB851D7C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D01025B-91BD-46CA-8F36-1B6BB851D7C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D01025B-91BD-46CA-8F36-1B6BB851D7C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D01025B-91BD-46CA-8F36-1B6BB851D7C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCADED55-398A-4138-A1B5-4323B49C4C61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCADED55-398A-4138-A1B5-4323B49C4C61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCADED55-398A-4138-A1B5-4323B49C4C61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCADED55-398A-4138-A1B5-4323B49C4C61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{435AB913-AD21-4600-8934-18C0E0722EAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{435AB913-AD21-4600-8934-18C0E0722EAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{435AB913-AD21-4600-8934-18C0E0722EAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{435AB913-AD21-4600-8934-18C0E0722EAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88C236FA-A2C9-49F1-9756-E1A41AAAF474}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88C236FA-A2C9-49F1-9756-E1A41AAAF474}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88C236FA-A2C9-49F1-9756-E1A41AAAF474}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88C236FA-A2C9-49F1-9756-E1A41AAAF474}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9BA6B6D9-66E1-47FB-BB4E-CF899AAF536F}
+	EndGlobalSection
+EndGlobal
