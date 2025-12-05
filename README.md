@@ -3,7 +3,7 @@
 > **CineLog**, sinema tutkunlarının izledikleri veya izlemeyi planladıkları yapımları kayıt altına alıp yönetebildikleri, **OMDB API** entegrasyonu ile güçlendirilmiş, **N-Katmanlı Mimari (N-Tier Architecture)** prensiplerine göre tasarlanmış modern ve ölçeklenebilir bir **ASP.NET Core MVC** projesidir.
 ---
 
-## 📖 Proje Hakkında
+# 📖 Proje Hakkında
 
 CineLog, standart bir "To-Do" uygulamasının ötesine geçerek, dış dünyadan (OMDB) anlık veri çeken, bu veriyi yerel veritabanında işleyen ve kullanıcıya özel analizler sunan "Full-Stack" bir projedir. 
 
@@ -38,7 +38,7 @@ Projenin temel amacı, kullanıcılara sadece statik bir liste sunmak değil; **
 
 ---
 
-## 🛠 Teknoloji Yığını
+## 🛠 Kullanılan Teknolojiler
 
 | Alan | Teknoloji | Açıklama |
 | :--- | :--- | :--- |
@@ -69,4 +69,16 @@ Proje 4 ana katmandan oluşmaktadır:
     * *İçerik:* Validasyonlar, API Haberleşme Servisleri (`ImdbService`), İş mantığı metodları.
 4.  **CineLog.Web (Sunum):** Kullanıcının etkileşime girdiği en dış katmandır.
     * *İçerik:* `Controllers`, `Views` (Razor), `ViewModels`, Statik Dosyalar (CSS/JS).
+
+---
+
+## 👨‍💻 Geliştirici
+
+**İlhan Can Tuğcu** 
+
+* [LinkedIn Profilim](http://linkedin.com/in/ilhan-can-tugcu)
+* [GitHub Profilim](https://github.com/IlhanCanTugcu)
+
+---
+*© 2025 İlhan Can Tuğcu - Tüm Hakları Saklıdır.*
 
