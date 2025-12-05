@@ -1,14 +1,13 @@
 # 🎬 CineLog - Kişisel Sinema Arşivi ve Analiz Platformu
 
-> **CineLog**, sinemaseverlerin izledikleri veya izleyecekleri yapımları takip etmelerini sağlayan, **OMDB API** entegrasyonlu, **N-Katmanlı Mimari** ile geliştirilmiş modern bir web uygulamasıdır.
-
+> **CineLog**, sinema tutkunlarının izledikleri veya izlemeyi planladıkları yapımları kayıt altına alıp yönetebildikleri, **OMDB API** entegrasyonu ile güçlendirilmiş, **N-Katmanlı Mimari (N-Tier Architecture)** prensiplerine göre tasarlanmış modern ve ölçeklenebilir bir **ASP.NET Core MVC** projesidir.
 ---
 
 ## 📖 Proje Hakkında
 
 CineLog, standart bir "To-Do" uygulamasının ötesine geçerek, dış dünyadan (OMDB) anlık veri çeken, bu veriyi yerel veritabanında işleyen ve kullanıcıya özel analizler sunan "Full-Stack" bir projedir. 
 
-Kullanıcılar **Glassmorphism** tasarım diliyle hazırlanmış modern arayüzde filmleri arayabilir, detaylarını inceleyebilir, kendi koleksiyonlarına ekleyebilir ve izleme alışkanlıklarına dair (Favori tür, yönetmen, ortalama puan vb.) istatistiksel raporlar alabilirler.
+Projenin temel amacı, kullanıcılara sadece statik bir liste sunmak değil; **canlı veri akışı**, **görsel zenginlik** ve **kişisel analizler** ile yaşayan bir deneyim yaşatmaktır. Kullanıcılar, milyonlarca film arasından saniyeler içinde arama yapabilir, filmlerin detaylı bilgilerine (Poster, Yıl, Tür, IMDB Puanı vb.) erişebilir ve tek bir tıkla bu verileri kendi yerel veritabanlarına kaydedebilirler. 
 
 ---
 
@@ -55,17 +54,19 @@ Kullanıcılar **Glassmorphism** tasarım diliyle hazırlanmış modern arayüzd
 
 ## 🏗 Mimari Yapı
 
-Proje, sürdürülebilirlik ve temiz kod prensipleri gözetilerek **Onion Architecture (Soğan Mimarisi)** benzeri bir N-Katmanlı yapı ile kurgulanmıştır.
+Proje, sürdürülebilirlik, test edilebilirlik ve temiz kod (Clean Code) prensipleri gözetilerek **Onion Architecture (Soğan Mimarisi)** benzeri, gevşek bağlı (loosely coupled) bir N-Katmanlı yapı ile kurgulanmıştır.
 
-```mermaid
-graph TD;
-    WebUI-->Service;
-    Service-->Data;
-    Data-->Core;
-    Service-->Core;
-    WebUI-->Core;
+**Katmanların Bağımlılık Akışı:**
+`Web (UI) -> Service (Logic) -> Data (Database) -> Core (Entities)`
 
-1.CineLog.Core: Projenin kalbi. Entity'ler, Interface'ler ve DTO'lar burada bulunur. Başka hiçbir katmana bağımlı değildir.
-2.CineLog.Data: Veritabanı erişim katmanı. DbContext, Migrations ve Repository implementasyonları buradadır.
-3.CineLog.Service: İş mantığı (Business Logic) katmanı. API haberleşmesi (ImdbService), Validasyonlar ve veri işleme buradadır.
-4.CineLog.Web: Kullanıcının etkileşime girdiği katman. Controller'lar, View'lar ve statik dosyalar buradadır.
+Proje 4 ana katmandan oluşmaktadır:
+
+1.  **CineLog.Core (Merkez):** Projenin kalbidir ve başka hiçbir katmana bağımlı değildir. Tüm katmanlar burayı referans alır.
+    * *İçerik:* Varlıklar (`Entities`), Arayüzler (`Interfaces`), Veri Transfer Objeleri (`DTOs`).
+2.  **CineLog.Data (Veri Erişim):** Veritabanı ile iletişimden sorumludur. Core katmanındaki soyutlamaları (Interface) uygular.
+    * *İçerik:* `DbContext`, `Migrations`, `Repository` implementasyonları, `Entity Framework Core` konfigürasyonları.
+3.  **CineLog.Service (İş Mantığı):** Uygulamanın kurallarının işletildiği yerdir. Controller ile Data katmanı arasındaki köprüdür.
+    * *İçerik:* Validasyonlar, API Haberleşme Servisleri (`ImdbService`), İş mantığı metodları.
+4.  **CineLog.Web (Sunum):** Kullanıcının etkileşime girdiği en dış katmandır.
+    * *İçerik:* `Controllers`, `Views` (Razor), `ViewModels`, Statik Dosyalar (CSS/JS).
+
