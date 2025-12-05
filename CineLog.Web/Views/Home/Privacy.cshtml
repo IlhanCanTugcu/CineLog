@@ -1,6 +1,159 @@
 ﻿@{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = "Gizlilik Politikası";
+    var guncelTarih = DateTime.Now.ToString("dd MMMM yyyy");
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<style>
+    /* Dark Mode Tasarım Özelleştirmeleri */
+    .privacy-header {
+        /* Üst kısım hafif gradyanlı siyah */
+        background: linear-gradient(180deg, #000000 0%, #1a1a1a 100%);
+        padding: 3rem 0;
+        margin-bottom: 2rem;
+        border-bottom: 1px solid #333;
+    }
+
+    .policy-card {
+        border: none;
+        /* Koyu Gri Arka Plan (Pure Black değil, Surface rengi) */
+        background-color: #1e1e1e;
+        color: #e0e0e0; /* Metin rengi: Açık Gri */
+        border-left: 5px solid; /* Renkli şerit */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        /* Hover durumunda kart biraz parlasın */
+        .policy-card:hover {
+            transform: translateY(-5px);
+            background-color: #252525;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+    .policy-icon {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    /* Başlıklar beyaz */
+    .policy-card h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #ffffff;
+        margin-bottom: 1rem;
+    }
+
+    /* Paragraf ve liste öğeleri daha yumuşak gri */
+    .policy-card p, .policy-card ul li {
+        color: #b0b3b8;
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    /* Liste noktaları */
+    .policy-card ul {
+        padding-left: 1.2rem;
+    }
+
+    /* Giriş Kartı */
+    .intro-card {
+        background-color: #1e1e1e;
+        border: 1px solid #333;
+    }
+</style>
+
+<div class="privacy-header text-center">
+    <div class="container">
+        <h1 class="display-4 fw-bold text-white">Gizlilik Politikası</h1>
+        <p class="lead text-secondary">Verileriniz CineLog güvencesi altında.</p>
+        <span class="badge bg-dark border border-secondary text-light mt-2">Son Güncelleme: @guncelTarih</span>
+    </div>
+</div>
+
+<div class="container mb-5">
+    <div class="row g-4">
+
+        <div class="col-12 mb-2">
+            <div class="card intro-card shadow-sm">
+                <div class="card-body p-4 text-center">
+                    <p class="card-text m-0" style="opacity: 0.8;">
+                        CineLog olarak, kişisel verilerinizin güvenliği hususuna azami hassasiyet göstermekteyiz.
+                        Aşağıdaki başlıklar verilerinizin nasıl işlendiğini özetlemektedir.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card policy-card h-100" style="border-left-color: #e50914;">
+                <div class="card-body p-4">
+                    <div class="policy-icon" style="color: #e50914;">
+                        <i class="bi bi-person-lines-fill"></i>
+                    </div>
+                    <h2>Toplanan Veriler</h2>
+                    <p>Hizmetimizi geliştirirken yalnızca temel bilgileri topluyoruz:</p>
+                    <ul>
+                        <li>Kullanıcı adı ve e-posta adresi (Üyelik için).</li>
+                        <li>İzleme listeleri (Watchlist) ve favori türler.</li>
+                        <li>Uygulama içi temel etkileşim logları.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card policy-card h-100" style="border-left-color: #6f42c1;">
+                <div class="card-body p-4">
+                    <div class="policy-icon" style="color: #6f42c1;">
+                        <i class="bi bi-hdd-network"></i>
+                    </div>
+                    <h2>Verilerin Kullanımı</h2>
+                    <p>Topladığımız verileri şu amaçlarla işliyoruz:</p>
+                    <ul>
+                        <li>Size özel film önerileri (Recommendation Engine).</li>
+                        <li>Hesap güvenliğini sağlamak.</li>
+                        <li>Sistemi iyileştirmek için performans analizi.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card policy-card h-100" style="border-left-color: #fd7e14;">
+                <div class="card-body p-4">
+                    <div class="policy-icon" style="color: #fd7e14;">
+                        <i class="bi bi-cookie"></i>
+                    </div>
+                    <h2>Çerezler</h2>
+                    <p>
+                        Oturumunuzun açık kalması ve tercihlerinizi hatırlamak için zorunlu çerezleri kullanıyoruz.
+                        Tarayıcı ayarlarınızdan bunları yönetebilirsiniz.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card policy-card h-100" style="border-left-color: #198754;">
+                <div class="card-body p-4">
+                    <div class="policy-icon" style="color: #198754;">
+                        <i class="bi bi-envelope-paper"></i>
+                    </div>
+                    <h2>İletişim</h2>
+                    <p>
+                        Gizlilik politikamızla ilgili sorularınız veya veri silme talepleriniz için bize ulaşabilirsiniz.
+                    </p>
+                    <a href="mailto:ilhancantugcu@hotmail.com" class="btn btn-outline-success mt-2">
+                        Bize Ulaşın
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="text-center mt-5">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-outline-success px-4 py-2 rounded-pill">
+            <i class="bi bi-arrow-left me-2"></i>Ana Sayfaya Dön
+        </a>
+    </div>
+</div>
