@@ -27,7 +27,7 @@ namespace CineLog.Data.Context
             builder.Entity<UserMovie>()
                 .HasKey(x => new { x.AppUserId, x.MovieId });
 
-            // İlişkileri açıkça belirtelim (Opsiyonel ama garanti olur)
+            // İlişkileri açıkça belirtelim 
             builder.Entity<UserMovie>()
                 .HasOne(x => x.Movie)
                 .WithMany(x => x.UserMovies)
