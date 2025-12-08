@@ -6,6 +6,7 @@ using CineLog.Web.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.Recommendations;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
@@ -50,8 +51,36 @@ namespace CineLog.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Details(string id)
         {
-            var movie = await _imdbService.GetMovieByIdAsync(id);
-            return View(movie);
+            var movieDto = await _imdbService.GetMovieByIdAsync(id);
+            // 1. Tüm türleri listeye çevir (Örn: ["Adventure", "Drama", "Western"])
+            var genres = movieDto.Genre.Split(new[] { ", " }, StringSplitOptions.None).ToList();
+
+            // 2. Varsayılan arama kelimesi (İlk sıradaki)
+            var searchGenre = genres[0];
+
+            // 3. DAHA BELİRLEYİCİ TÜRLER LİSTESİ (Öncelik Sırası)
+            // Adventure veya Drama çok geneldir. Eğer filmde aşağıdaki türlerden biri varsa, onu baz alalım.
+            var priorityGenres = new List<string> { "Western", "Horror", "Animation", "Sci-Fi", "Fantasy", "War" };
+
+            // Listemizdeki türlerden herhangi biri, öncelikli listede var mı?
+            var specificGenre = genres.FirstOrDefault(g => priorityGenres.Contains(g));
+
+            if (specificGenre != null)
+            {
+                searchGenre = specificGenre; // Adventure yerine Western'i seç!
+            }
+
+            var similarMovies = _movieService
+                .Where(x => x.Genre.Contains(searchGenre) && x.ImdbId != id)
+                .Take(4)
+                .ToList();
+
+            var model = new MovieDetailViewModel
+            {
+                Details = movieDto,
+                Recommendations = similarMovies
+            };
+            return View(model);
         }
 
         // LİSTEME EKLE (Sadece Giriş Yapanlar)

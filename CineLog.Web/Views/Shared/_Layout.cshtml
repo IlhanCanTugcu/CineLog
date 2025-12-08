@@ -21,7 +21,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark glass-navbar mb-4 shadow-lg py-3">
             <div class="container">
 
-                <a class="navbar-brand fw-bold fs-3 text-primary" asp-area="" asp-controller="Home" asp-action="Index">
+                <a class="navbar-brand fw-bold fs-3 text-warning" asp-area="" asp-controller="Home" asp-action="Index">
                     <i class="bi bi-film me-2"></i>CineLog
                 </a>
 
@@ -41,12 +41,12 @@
                         @if (SignInManager.IsSignedIn(User))
                         {
                             <li class="nav-item ms-lg-3">
-                                <a class="nav-link fs-5 text-warning" asp-controller="Movies" asp-action="MyList">
+                                <a class="nav-link fs-5 " asp-controller="Movies" asp-action="MyList">
                                     <i class="bi bi-collection-play-fill me-1"></i> Arşivim
                                 </a>
                             </li>
                             <li class="nav-item ms-lg-3">
-                                <a class="nav-link fs-5 text-info" asp-controller="Movies" asp-action="Stats">
+                                <a class="nav-link fs-5 " asp-controller="Movies" asp-action="Stats">
                                     <i class="bi bi-bar-chart-line-fill me-1"></i> Analiz
                                 </a>
                             </li>

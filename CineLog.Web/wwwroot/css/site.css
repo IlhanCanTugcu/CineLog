@@ -1,5 +1,10 @@
+/* =========================================
+   1. GENEL AYARLAR VE YAPILANDIRMA
+   ========================================= */
 html {
     font-size: 14px;
+    position: relative;
+    min-height: 100%;
 }
 
 @media (min-width: 768px) {
@@ -8,113 +13,51 @@ html {
     }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+body {
+    margin-bottom: 60px; /* Footer için boþluk */
+    background-color: #121212; /* Varsayýlan koyu arka plan (Öneri) */
+    color: #fff; /* Varsayýlan açýk yazý rengi */
+}
+
+/* Odaklanma Efektleri (Accessibility) */
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
     box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
-html {
-    position: relative;
-    min-height: 100%;
-}
+/* =========================================
+   2. NAVBAR & FOOTER
+   ========================================= */
 
-body {
-    margin-bottom: 60px;
-}
-
-/* --- GENEL SÝNEMATÝK EFEKTLER (CineLog) --- */
-
-/* 1. Buzlu Cam Efekti (Glassmorphism) 
-   Hem ana sayfa arama kutusu hem de film arama kutusu için */
-.glass-panel, .glass-search-bar {
-    background: rgba(30, 30, 30, 0.6);
+/* Navbar: Buzlu Cam Efekti */
+.glass-navbar {
+    background-color: rgba(20, 20, 20, 0.9) !important;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* 2. Yazý Gölgeleri (Okunabilirlik için) */
-.text-shadow-strong {
-    text-shadow: 2px 2px 8px #000000;
+.nav-link {
+    transition: color 0.3s ease;
 }
 
-.text-shadow-light {
-    text-shadow: 1px 1px 4px #000000;
-}
-
-/* 3. Ana Sayfa Özellik Kartlarý */
-.feature-card {
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    background: rgba(255, 255, 255, 0.02);
-}
-
-    .feature-card:hover {
-        transform: translateY(-10px); /* Havalanma efekti */
-        background: rgba(255, 255, 255, 0.05);
-        border-color: var(--bs-primary);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    .nav-link:hover {
+        color: #fff !important;
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
     }
 
-/* 4. Film Kartlarý (Movies/Index ve MyList için) */
-.movie-card {
-    transition: all 0.3s ease;
-    background-color: #1e1e1e;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    overflow: hidden;
-}
-
-    .movie-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
-        border-color: var(--bs-warning);
-    }
-
-/* Poster Kutusu (Zoom efekti için çerçeve) */
-.movie-poster-container {
-    height: 380px;
-    overflow: hidden;
-    position: relative;
-}
-
-/* Posterin Kendisi */
-.movie-poster {
-    transition: transform 0.5s ease;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Karta gelince poster zoom yapsýn */
-.movie-card:hover .movie-poster {
-    transform: scale(1.05);
-}
-
-/* 5. Animasyonlar (Aþaðýdan yukarý süzülme) */
-.fade-in, .fade-in-up {
-    animation: fadeInUp 0.8s ease-out;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* --- MODERN FOOTER --- */
+/* Modern Glass Footer */
 .glass-footer {
-    background: rgba(15, 15, 15, 0.95); /* Çok koyu gri */
+    background: rgba(15, 15, 15, 0.95);
     backdrop-filter: blur(10px);
-    border-top: 1px solid rgba(255, 255, 255, 0.05); /* Üstte ince çizgi */
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
     padding-top: 3rem;
     padding-bottom: 1.5rem;
-    margin-top: auto; /* Sayfa içeriði azsa bile en alta iter */
+    margin-top: auto;
 }
 
 .footer-brand i {
@@ -127,16 +70,17 @@ body {
 }
 
 .footer-links a {
-    color: #aaa; /* Sönük gri */
+    color: #aaa;
     text-decoration: none;
     transition: all 0.3s ease;
 }
 
     .footer-links a:hover {
-        color: var(--bs-primary); /* Üzerine gelince Mavi */
-        padding-left: 5px; /* Hafif saða kayma efekti */
+        color: var(--bs-primary);
+        padding-left: 5px;
     }
 
+/* Sosyal Medya Ýkonlarý */
 .social-icon {
     width: 40px;
     height: 40px;
@@ -155,22 +99,117 @@ body {
         background: var(--bs-primary);
         transform: translateY(-3px);
         color: #fff;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     }
 
-/* Navbar için özel buzlu cam efekti */
-.glass-navbar {
-    background-color: rgba(20, 20, 20, 0.9) !important;
+/* =========================================
+   3. SÝNEMATÝK EFEKTLER (CineLog UI)
+   ========================================= */
+
+/* Buzlu Cam Paneller (Arama Kutusu vb.) */
+/* Ýki taným vardý, koyu tema için daha uygun olan birleþtirildi */
+.glass-panel,
+.glass-search-bar {
+    background: rgba(30, 30, 30, 0.6);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
-/* Linklerin üzerine gelince parlamasý */
-.nav-link {
-    transition: color 0.3s ease;
+/* Yazý Gölgeleri */
+.text-shadow-strong {
+    text-shadow: 2px 2px 8px #000000;
 }
 
-    .nav-link:hover {
-        color: #fff !important;
-        text-shadow: 0 0 5px rgba(255,255,255,0.5);
+.text-shadow-light {
+    text-shadow: 1px 1px 4px #000000;
+}
+
+/* =========================================
+   4. KARTLAR VE LÝSTELER
+   ========================================= */
+
+/* Ana Sayfa Özellik Kartlarý */
+.feature-card {
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+    .feature-card:hover {
+        transform: translateY(-10px);
+        background: rgba(255, 255, 255, 0.05);
+        border-color: var(--bs-warning);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
     }
+
+/* Film Kartlarý */
+.movie-card {
+    transition: all 0.3s ease;
+    background-color: #1e1e1e;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+}
+
+    .movie-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        border-color: var(--bs-warning);
+    }
+
+/* Poster Kutusu */
+.movie-poster-container {
+    position: relative;
+    overflow: hidden;
+    /* Aspect Ratio modern tarayýcýlarda daha iyi sonuç verir */
+    aspect-ratio: 2/3;
+    width: 100%;
+}
+
+/* Poster Resmi */
+.movie-poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* Karta gelince poster zoom efekti */
+.movie-card:hover .movie-poster {
+    transform: scale(1.05);
+}
+
+/* =========================================
+   5. YARDIMCI SINIFLAR VE ANÝMASYONLAR
+   ========================================= */
+
+/* Genel Hover Efekti (Büyüme/Kayma) */
+/* Ýki farklý hover-scale tanýmý birleþtirildi */
+.hover-scale {
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+    .hover-scale:hover {
+        transform: translateY(-5px) scale(1.02); /* Hem yukarý kayma hem hafif büyüme */
+        border-color: #ffc107 !important; /* Warning rengi */
+    }
+
+/* Fade In Animasyonlarý */
+.fade-in,
+.fade-in-up {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* Not: CSS dosyasýnda @@ kullanýlmaz, tek @ kullanýlýr */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
