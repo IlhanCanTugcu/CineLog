@@ -5,7 +5,7 @@
 
 # 📖 Proje Hakkında
 
-CineLog, standart bir "To-Do" uygulamasının ötesine geçerek, dış dünyadan (OMDB) anlık veri çeken, bu veriyi yerel veritabanında işleyen ve kullanıcıya özel analizler sunan "Full-Stack" bir projedir. 
+CineLog, standart bir "İzlenecekler Listesi" uygulamasının ötesine geçerek, dış dünyadan (OMDB) anlık veri çeken, bu veriyi yerel veritabanında işleyen ve kullanıcıya özel analizler sunan "Full-Stack" bir projedir. 
 
 Projenin temel amacı, kullanıcılara sadece statik bir liste sunmak değil; **canlı veri akışı**, **görsel zenginlik** ve **kişisel analizler** ile yaşayan bir deneyim yaşatmaktır. Kullanıcılar, milyonlarca film arasından saniyeler içinde arama yapabilir, filmlerin detaylı bilgilerine (Poster, Yıl, Tür, IMDB Puanı vb.) erişebilir ve tek bir tıkla bu verileri kendi yerel veritabanlarına kaydedebilirler. 
 
@@ -17,10 +17,14 @@ Projenin temel amacı, kullanıcılara sadece statik bir liste sunmak değil; **
 * OMDB API entegrasyonu ile milyonlarca film, dizi ve oyun arasında anlık arama.
 * Arama sonuçlarında poster, yıl ve tür önizlemesi.
 
+### 🧠 Akıllı Öneri Motoru (Smart Recommendation Engine)
+* Baskın Tür Analizi (Dominant Genre Analysis): Sistem, öneri yaparken filmin sadece ilk türüne bakmaz. Western, Sci-Fi, Horror, War gibi daha spesifik ve belirleyici türleri algılayarak, "Adventure" gibi genel türlerin yarattığı gürültüyü engeller.
+* Bağlamsal Filtreleme: Kullanıcının o an incelediği filmin "Karakteristik Türü"nü belirler ve veritabanındaki en alakalı filmleri buna göre getirir.
+
 ### 🔐 **Güvenli Üyelik Sistemi**
 * **ASP.NET Core Identity** altyapısı.
 * Kayıt Ol / Giriş Yap / Çıkış Yap döngüsü.
-* Kullanıcıya özel veri izolasyonu (Herkes sadece kendi listesini görür).
+* Her kullanıcı veritabanında sadece kendi eklediği kayıtları görür ve yönetir.
 
 ### 📂 **Kişisel Koleksiyon Yönetimi**
 * Filmleri "Arşivim" listesine ekleme.
